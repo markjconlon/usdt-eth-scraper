@@ -33,9 +33,9 @@ class Trade < ApplicationRecord
     # then we check if the difference is in our margin
     high_sell = find_highest_sell(trades[:sells])
     low_buy = find_lowest_buy(trades[:buys])
-    rate_above =  high_sell[1][0] - (low_buy[1][0] * ((1 + 0.0025)/ ( 1 - 0.0026)) + (0.005+0.3*low_buy[1][0])/96)
+    rate_above =  high_sell[1][0] - (low_buy[1][0] * ((1 + 0.0025)/ ( 1 - 0.0026)) + (25+0.01*low_buy[1][0])/8)
     puts rate_above
-    if high_sell[1][0] >= (low_buy[1][0] * ((1 + 0.0025)/ ( 1 - 0.0026)) + (0.005+0.3*low_buy[1][0])/96)
+    if high_sell[1][0] >= (low_buy[1][0] * ((1 + 0.0025)/ ( 1 - 0.0026)) + (25+0.01*low_buy[1][0])/8)
       # if there is an opportunity we check to see which one has the lowest volume
       # this becomes the highest amount we can buy/sell
       find_highest_amount([high_sell, low_buy, rate_above])

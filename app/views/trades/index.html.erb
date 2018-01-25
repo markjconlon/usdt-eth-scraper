@@ -15,8 +15,9 @@
     <td>Sell Rate</td>
     <td>Buy Exchange</td>
     <td>Buy Rate</td>
-    <td>Volume (OMG)</td>
+    <td>Volume (ETH)</td>
     <td>Delta(above break even)</td>
+    <td>Gain</td>
   </tr>
   <% @trades.each do |trade| %>
     <tr>
@@ -27,6 +28,7 @@
       <td><%= trade.buy_rate %></td>
       <td><%= trade.amount %></td>
       <td><%= trade.rate_above_break_even %></td>
+      <td><%= trade.amount * trade.rate_above_break_even %></td>
     </tr>
   <% end %>
 </table>
