@@ -1,0 +1,32 @@
+<h1 style="text-align: center">Tactical Crypto Holdings</h1>
+<div class="start">
+  <%= link_to 'Check Trades', trades_check_trades_path, method: :post %>
+</div>
+
+<p>
+  Download
+  <%= link_to "CSV", trades_index_path(format: "csv") %>
+</p>
+
+<table>
+  <tr class="header">
+    <td>ID</td>
+    <td>Sell Exchnage</td>
+    <td>Sell Rate</td>
+    <td>Buy Exchange</td>
+    <td>Buy Rate</td>
+    <td>Volume (OMG)</td>
+    <td>Delta(above break even)</td>
+  </tr>
+  <% @trades.each do |trade| %>
+    <tr>
+      <td><%= trade.id %></td>
+      <td><%= trade.sell_exchange %></td>
+      <td><%= trade.sell_rate %></td>
+      <td><%= trade.buy_exchange %></td>
+      <td><%= trade.buy_rate %></td>
+      <td><%= trade.amount %></td>
+      <td><%= trade.rate_above_break_even %></td>
+    </tr>
+  <% end %>
+</table>
