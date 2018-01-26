@@ -5,6 +5,7 @@ class Trade < ApplicationRecord
 
     # calls to the apis are made on in the controller and passed down
     return if liqui_response["success"] == 0
+    return if poloniex_response.parsed_response == 0
     liqui_sell = liqui_response["eth_usdt"]["asks"][0]
     liqui_buy = liqui_response["eth_usdt"]["bids"][0]
     poloniex_sell = [(poloniex_response["asks"][0][0]).to_f, poloniex_response["asks"][0][1]]
